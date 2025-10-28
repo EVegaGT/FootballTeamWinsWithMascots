@@ -1,3 +1,6 @@
+using FootballTeamWinsWithMascots.Infrastructure.DbContexts;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +10,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//Database configuration
+builder.Services.AddDbContext<FootballTeamDbContext>(options =>
+    options.UseSqlite(builder.Configuration["ConnectionStrings:SQLiteDefault"]),
+    ServiceLifetime.Scoped);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -14,6 +22,21 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+
+//Migration at startup
+using (var scope = app.Services.CreateScope())
+{
+    try
+    {
+        var dbContext = scope.ServiceProvider.GetRequiredService<FootballTeamDbContext>();
+        dbContext.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while migrating the database.");
+    }
 }
 
 app.UseHttpsRedirection();
