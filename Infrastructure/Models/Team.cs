@@ -7,6 +7,8 @@ namespace FootballTeamWinsWithMascots.Infrastructure.Models
         [Key]
         public int Id { get; set; }
         [Required]
+        public int Rank { get; set; }
+        [Required]
         [MaxLength(300)]
         public string Name { get; set; }
         [Required]

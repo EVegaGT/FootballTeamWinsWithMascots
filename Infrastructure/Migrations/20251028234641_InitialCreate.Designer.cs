@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FootballTeamWinsWithMascots.Infrastructure.Migrations
 {
     [DbContext(typeof(FootballTeamDbContext))]
-    [Migration("20251028194313_InitialCreate")]
+    [Migration("20251028234641_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -44,6 +44,9 @@ namespace FootballTeamWinsWithMascots.Infrastructure.Migrations
                         .IsRequired()
                         .HasMaxLength(300)
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("Rank")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("Ties")
                         .HasColumnType("INTEGER");

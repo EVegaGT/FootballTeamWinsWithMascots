@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <Folder Include="DataBase\" />
+    <Folder Include="Data\" />
   </ItemGroup>
 
 </Project>

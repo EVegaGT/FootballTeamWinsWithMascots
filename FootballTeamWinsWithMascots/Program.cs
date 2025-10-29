@@ -1,4 +1,5 @@
 using FootballTeamWinsWithMascots.Infrastructure.DbContexts;
+using FootballTeamWinsWithMascots.Infrastructure.Migrations.Seed;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,9 @@ builder.Services.AddDbContext<FootballTeamDbContext>(options =>
     options.UseSqlite(builder.Configuration["ConnectionStrings:SQLiteDefault"]),
     ServiceLifetime.Scoped);
 
+// Dependency Injection mapps
+builder.Services.AddScoped<ICsvTeamsSeeder, CsvTeamsSeeder>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -24,6 +28,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// Create a cancellation token for database seed operations
+using var cts = new CancellationTokenSource();
+var cancellationToken = cts.Token;
+
 //Migration at startup
 using (var scope = app.Services.CreateScope())
 {
@@ -31,6 +39,10 @@ using (var scope = app.Services.CreateScope())
     {
         var dbContext = scope.ServiceProvider.GetRequiredService<FootballTeamDbContext>();
         dbContext.Database.Migrate();
+
+        //Seed database from CSV file
+        var seeder = scope.ServiceProvider.GetRequiredService<ICsvTeamsSeeder>();
+        await seeder.SeedData(cancellationToken);
     }
     catch (Exception ex)
     {

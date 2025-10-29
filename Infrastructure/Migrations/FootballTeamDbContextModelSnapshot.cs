@@ -42,6 +42,9 @@ namespace FootballTeamWinsWithMascots.Infrastructure.Migrations
                         .HasMaxLength(300)
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("Rank")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("Ties")
                         .HasColumnType("INTEGER");
 

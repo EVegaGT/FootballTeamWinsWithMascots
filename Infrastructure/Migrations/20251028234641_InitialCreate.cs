@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -16,6 +17,7 @@ namespace FootballTeamWinsWithMascots.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Rank = table.Column<int>(type: "INTEGER", nullable: false),
                     Name = table.Column<string>(type: "TEXT", maxLength: 300, nullable: false),
                     Mascot = table.Column<string>(type: "TEXT", maxLength: 300, nullable: false),
                     DateOfLastWin = table.Column<DateTime>(type: "TEXT", nullable: true),
