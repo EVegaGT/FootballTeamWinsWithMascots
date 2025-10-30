@@ -1,8 +1,8 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
+using FootballTeamWinsWithMascots.Domain.Entities;
 using FootballTeamWinsWithMascots.Infrastructure.DbContexts;
 using FootballTeamWinsWithMascots.Infrastructure.Helper;
-using FootballTeamWinsWithMascots.Infrastructure.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;

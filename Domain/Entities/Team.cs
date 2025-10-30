@@ -1,18 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
-namespace FootballTeamWinsWithMascots.Infrastructure.Models
+namespace FootballTeamWinsWithMascots.Domain.Entities
 {
     public class Team
     {
         [Key]
         public int Id { get; set; }
-        [Required]
         public int Rank { get; set; }
-        [Required]
-        [MaxLength(300)]
         public string Name { get; set; }
-        [Required]
-        [MaxLength(300)]
         public string Mascot { get; set; }
         public DateTime? DateOfLastWin { get; set; }
         public decimal WinsPercentage { get; set; }

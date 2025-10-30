@@ -1,6 +1,10 @@
+using FootballTeamWinsWithMascots.Application.Request.Models;
+using FootballTeamWinsWithMascots.Domain.Interfaces.ReadRepositories;
 using FootballTeamWinsWithMascots.Infrastructure.DbContexts;
 using FootballTeamWinsWithMascots.Infrastructure.Migrations.Seed;
+using FootballTeamWinsWithMascots.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,8 +20,16 @@ builder.Services.AddDbContext<FootballTeamDbContext>(options =>
     options.UseSqlite(builder.Configuration["ConnectionStrings:SQLiteDefault"]),
     ServiceLifetime.Scoped);
 
+//cqrs - MediatR configuration
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+builder.Services.AddMediatR(cfg =>
+    cfg.RegisterServicesFromAssembly(typeof(SearchTeamsQuery).Assembly));
+
 // Dependency Injection mapps
 builder.Services.AddScoped<ICsvTeamsSeeder, CsvTeamsSeeder>();
+
+//Dependency Injection for Repositories
+builder.Services.AddScoped<ITeamsReadRepository, TeamsReadRepository>();
 
 var app = builder.Build();
 

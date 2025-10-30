@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FootballTeamWinsWithMascots.Application\FootballTeamWinsWithMascots.Application.csproj" />
     <ProjectReference Include="..\Infrastructure\FootballTeamWinsWithMascots.Infrastructure.csproj" />
   </ItemGroup>
 

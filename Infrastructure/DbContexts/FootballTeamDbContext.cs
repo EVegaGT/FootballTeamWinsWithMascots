@@ -1,4 +1,4 @@
-﻿using FootballTeamWinsWithMascots.Infrastructure.Models;
+﻿using FootballTeamWinsWithMascots.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Reflection;
