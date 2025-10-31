@@ -31,11 +31,24 @@ builder.Services.AddScoped<ICsvTeamsSeeder, CsvTeamsSeeder>();
 //Dependency Injection for Repositories
 builder.Services.AddScoped<ITeamsReadRepository, TeamsReadRepository>();
 
+//CORS configuration - allo all for demo purposes
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("FrontendDev", policy =>
+        policy
+            .WithOrigins("http://localhost:5173", "https://localhost:5173")
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+    // .AllowCredentials() // solo si usarás cookies; si lo usas, NO uses AllowAnyOrigin
+    );
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseCors(p => p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
     app.UseSwagger();
     app.UseSwaggerUI();
 }

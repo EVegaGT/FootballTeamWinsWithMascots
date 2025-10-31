@@ -10,7 +10,7 @@ namespace FootballTeamWinsWithMascots.Application.Request.Models
         public string Query { get; set; } = "";
         public IReadOnlyList<string>? Columns  { get; set; }
         public int Page { get; set; } = 1;
-        [Range(1, 100)]
+        [Range(1, 200)]
         public int PageSize { get; set; } = 20;
     }
 }
