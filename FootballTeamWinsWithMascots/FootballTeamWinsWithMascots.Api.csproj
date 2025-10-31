@@ -24,4 +24,9 @@
     <Folder Include="Data\" />
   </ItemGroup>
 
+  <Target Name="BuildClient" BeforeTargets="Publish">
+	<Exec WorkingDirectory="../FootballTeamWinsWithMascots.WebApp" Command="npm ci" />
+	<Exec WorkingDirectory="../FootballTeamWinsWithMascots.WebApp" Command="npm run build" />
+  </Target>
+
 </Project>

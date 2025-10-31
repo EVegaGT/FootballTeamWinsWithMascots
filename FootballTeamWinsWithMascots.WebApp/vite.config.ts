@@ -1,10 +1,13 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { resolve } from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   server: {
+    port: 5138,
+    strictPort: true,
     proxy: {
       '/api': {
         target: 'https://localhost:7138',
@@ -13,5 +16,8 @@ export default defineConfig({
       },
     },
   },
-
+  build: {
+    outDir: resolve(__dirname, '../FootballTeamWinsWithMascots.Api/wwwroot'),
+    emptyOutDir: true,
+  },
 })

@@ -36,7 +36,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("FrontendDev", policy =>
         policy
-            .WithOrigins("http://localhost:5173", "https://localhost:5173")
+            .WithOrigins("http://localhost:5138", "https://localhost:5138")
             .AllowAnyHeader()
             .AllowAnyMethod()
     // .AllowCredentials() // solo si usarás cookies; si lo usas, NO uses AllowAnyOrigin
@@ -78,8 +78,13 @@ using (var scope = app.Services.CreateScope())
 
 app.UseHttpsRedirection();
 
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapFallbackToFile("index.html");
 
 app.Run();

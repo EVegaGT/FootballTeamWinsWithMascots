@@ -1,0 +1,17 @@
+[
+  {
+    "Name": "Run",
+    "Projects": [
+      {
+        "Path": "FootballTeamWinsWithMascots\\FootballTeamWinsWithMascots.Api.csproj",
+        "Action": "Start",
+        "DebugTarget": "FootballTeamWinsWithMascots.Api"
+      },
+      {
+        "Path": "FootballTeamWinsWithMascots.WebApp\\FootballTeamWinsWithMascots.WebApp.esproj",
+        "Action": "Start",
+        "DebugTarget": "localhost (Edge)"
+      }
+    ]
+  }
+]
