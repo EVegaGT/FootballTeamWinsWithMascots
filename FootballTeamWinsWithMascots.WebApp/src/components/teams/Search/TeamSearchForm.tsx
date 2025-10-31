@@ -21,7 +21,6 @@ const MenuProps = {
     },
 };
 
-
 const validColumns = [
     'All',
     'Name',
@@ -55,11 +54,11 @@ export default function TeamSearchForm({ setResult, loading, setLoading }: Props
         try {
             const body: SearchTeamsQuery = {
                 query: query.trim(),
-                columns: !column?.length || column.includes("All")
+                columns: !column?.length || column.includes("All") //If we don't select any column, we will send all the valid columns
                     ? validColumns.filter((v) => v !== "All")
                     : column,
                 page: 1,
-                pageSize: 150,
+                pageSize: 200, //The enpoint support pagination, but for now, we won't implement it yet
             };
 
             const { data } = await api.api.teamSearchCreate(body);

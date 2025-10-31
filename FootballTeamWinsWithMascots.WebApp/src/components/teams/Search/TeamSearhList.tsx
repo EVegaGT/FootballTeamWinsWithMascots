@@ -1,68 +1,66 @@
-import { Box, Typography } from '@mui/material';
-import type { TeamDtoPagedResult } from '../../../api/generated/client';
-import { DataGrid, type GridColDef } from '@mui/x-data-grid';
+import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import type { TeamDto, TeamDtoPagedResult } from '../../../api/generated/client';
+import { formatDDMMYYYY } from '../../../Helpers/CommonFuncitons';
 
 interface Props {
     result: TeamDtoPagedResult | null;
 }
 
 export default function TeamSearchList({ result }: Props) {
-    const columns: GridColDef[] = [
-        { field: 'rank', headerName: 'Rank', width: 50 },
-        { field: 'name', headerName: 'Name', width: 200, flex: 1 },
-        { field: 'mascot', headerName: 'Mascot', width: 200, flex: 1 },
-        {
-            field: 'winsPercentage',
-            headerName: 'Wins %',
-            width: 110,
-            valueFormatter: (p: number) =>
-                p != null ? (p * 100).toFixed(2) + '%' : '-',
-        },
-        { field: 'wins', headerName: 'Wins', width: 70 },
-        { field: 'losses', headerName: 'Losses', width: 70 },
-        { field: 'ties', headerName: 'Ties', width: 70 },
-        { field: 'games', headerName: 'Games', width: 70 },
-        {
-            field: 'dateOfLastWin',
-            headerName: 'Last Win',
-            width: 150,
-            valueFormatter: (params) => {
-                if (!params) return '-';
-                const date = new Date(params);
-                const day = String(date.getDate()).padStart(2, '0');
-                const month = String(date.getMonth() + 1).padStart(2, '0');
-                const year = date.getFullYear();
-                return `${day}/${month}/${year}`;
-            },
-        },
-    ];
+    const rows = (result?.items ?? []) as TeamDto[];
 
     return (
-        <Box sx={{ maxWidth: 1500, mx: 'auto', mt: 4 }}>
-            {result?.items?.length ? (
-                <DataGrid
-                    rows={result.items.map((t) => ({
-                        id: t.id,
-                        ...t,
-                    }))}
-                    columns={columns}
-                    pageSizeOptions={[5, 10, 20]}
-                    initialState={{
-                        pagination: {
-                            paginationModel: {
-                                pageSize: result.pageSize || 10,
-                            },
-                        },
-                    }}
-                    autoHeight
-                    disableRowSelectionOnClick
-                />
+        <Box sx={{ maxWidth: 1100, mx: "auto", mt: 3 }}>
+            {!result ? null : rows.length === 0 ? (
+                <Typography variant="body1" textAlign="center" sx={{ mt: 2 }}>
+                    No results.
+                </Typography>
             ) : (
-                result && (
-                    <Typography variant="body1" textAlign="center" sx={{ mt: 2 }}>
-                        No results found.
-                    </Typography>
-                )
+                <TableContainer
+                    component={Paper}
+                    sx={{
+                        maxHeight: "65vh",
+                        borderRadius: 2,
+                    }}
+                >
+                    <Table stickyHeader size="medium" aria-label="teams table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell sx={{ fontWeight: 600 }}>Rank</TableCell>
+                                <TableCell sx={{ fontWeight: 600 }}>Name</TableCell>
+                                <TableCell sx={{ fontWeight: 600 }}>Mascot</TableCell>
+                                <TableCell sx={{ fontWeight: 600 }}>Wins %</TableCell>
+                                <TableCell sx={{ fontWeight: 600 }}>Wins</TableCell>
+                                <TableCell sx={{ fontWeight: 600 }}>Losses</TableCell>
+                                <TableCell sx={{ fontWeight: 600 }}>Ties</TableCell>
+                                <TableCell sx={{ fontWeight: 600 }}>Games</TableCell>
+                                <TableCell sx={{ fontWeight: 600 }}>Last Win</TableCell>
+                            </TableRow>
+                        </TableHead>
+
+                        <TableBody>
+                            {rows.map((t) => (
+                                <TableRow key={t.id} hover>
+                                    <TableCell>{t.rank}</TableCell>
+                                    <TableCell>{t.name}</TableCell>
+                                    <TableCell>{t.mascot}</TableCell>
+                                    <TableCell>
+                                        {t.winsPercentage != null ? `${(t.winsPercentage * 100).toFixed(2)}%` : "—"}
+                                    </TableCell>
+                                    <TableCell>{t.wins}</TableCell>
+                                    <TableCell>{t.losses}</TableCell>
+                                    <TableCell>{t.ties}</TableCell>
+                                    <TableCell>{t.games}</TableCell>
+                                    <TableCell>
+                                        {t.dateOfLastWin
+                                            ? formatDDMMYYYY(new Date(t.dateOfLastWin))
+                                            : "—"}
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
             )}
         </Box>
     );
