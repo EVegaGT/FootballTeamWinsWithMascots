@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36603.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballTeamWinsWithMascots.Api", "FootballTeamWinsWithMascots\FootballTeamWinsWithMascots.Api.csproj", "{9C533C9D-D0BC-44FE-BCFC-6ED00D0D1C96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballTeamWinsWithMascots.Domain", "Domain\FootballTeamWinsWithMascots.Domain.csproj", "{955BA5EE-C0DD-4CC8-8351-79870B84D3E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballTeamWinsWithMascots.Infrastructure", "Infrastructure\FootballTeamWinsWithMascots.Infrastructure.csproj", "{168CF964-DAC4-48D8-9DA4-265BE07090DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballTeamWinsWithMascots.Application", "FootballTeamWinsWithMascots.Application\FootballTeamWinsWithMascots.Application.csproj", "{254B5CD3-3AAC-490C-9BB8-7BDFEEEF9077}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "FootballTeamWinsWithMascots.WebApp", "FootballTeamWinsWithMascots.WebApp\FootballTeamWinsWithMascots.WebApp.esproj", "{285035F6-26C8-5762-070D-BDCE020C5A41}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9C533C9D-D0BC-44FE-BCFC-6ED00D0D1C96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C533C9D-D0BC-44FE-BCFC-6ED00D0D1C96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C533C9D-D0BC-44FE-BCFC-6ED00D0D1C96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C533C9D-D0BC-44FE-BCFC-6ED00D0D1C96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{955BA5EE-C0DD-4CC8-8351-79870B84D3E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{955BA5EE-C0DD-4CC8-8351-79870B84D3E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{955BA5EE-C0DD-4CC8-8351-79870B84D3E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{955BA5EE-C0DD-4CC8-8351-79870B84D3E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{168CF964-DAC4-48D8-9DA4-265BE07090DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{168CF964-DAC4-48D8-9DA4-265BE07090DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{168CF964-DAC4-48D8-9DA4-265BE07090DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{168CF964-DAC4-48D8-9DA4-265BE07090DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{254B5CD3-3AAC-490C-9BB8-7BDFEEEF9077}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{254B5CD3-3AAC-490C-9BB8-7BDFEEEF9077}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{254B5CD3-3AAC-490C-9BB8-7BDFEEEF9077}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{254B5CD3-3AAC-490C-9BB8-7BDFEEEF9077}.Release|Any CPU.Build.0 = Release|Any CPU
+		{285035F6-26C8-5762-070D-BDCE020C5A41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{285035F6-26C8-5762-070D-BDCE020C5A41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{285035F6-26C8-5762-070D-BDCE020C5A41}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{285035F6-26C8-5762-070D-BDCE020C5A41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{285035F6-26C8-5762-070D-BDCE020C5A41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{285035F6-26C8-5762-070D-BDCE020C5A41}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {91F3656E-E4DE-46A9-BDED-5989F7A64E03}
+	EndGlobalSection
+EndGlobal
